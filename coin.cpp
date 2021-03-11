@@ -7,10 +7,11 @@
 using namespace std;
 
 const double ini_a = 0.5;
-const double ini_b = 0.3;
+const double ini_b = 0.1;
 
-const int real_a_bound = 9; // a_probility = real_a_bound / 10.0
-const int real_b_bound = 4; // b_probility = real_b_bound / 10.0
+const int real_a_bound = 70; // a_probility = real_a_bound / base;
+const int real_b_bound = 50; // b_probility = real_b_bound / base;
+const int base = 100;
 
 int main() {
     double theta_a    = ini_a;
@@ -28,15 +29,16 @@ int main() {
     ofstream output("show.csv");
 
     int count = 2;
-    while(count <= 1000) {
+    const int times = 5000;
+    while(count <= times) {
         double a_head = 0, a_tail = 0;
         double b_head = 0, b_tail = 0;
         for(int i = 0; i < 10; ++i) {
             sum = 0;
             int bound = real_a_bound;
-            if((rand() % 10 + 1) >= 6) bound = real_b_bound; // [1, 5] -> coin a, [6, 10] -> coin b
+            if((rand() % 10 + 1) >= 6) bound = real_b_bound; // select coin A or coin B
             for(int j = 0; j < 10; ++j) {
-                arr[i][j] = (rand() % 10 + 1) <= bound? 1: 0;
+                arr[i][j] = (rand() % base + 1) <= bound? 1: 0;
                 sum = arr[i][j]? sum + 1: sum;
             }
             double temp_a = pow(theta_a, sum) * pow((1 - theta_a), 10 - sum);

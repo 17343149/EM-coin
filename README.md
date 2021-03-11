@@ -13,3 +13,7 @@ GMM模型中的EM算法在抛硬币实验中的`收敛性测试`.
   - 返回第一步进行迭代.
 
 - 讲解视频: [https://www.bilibili.com/video/BV1Ts41177id?t=1071](https://www.bilibili.com/video/BV1Ts41177id?t=1071)
+
+## 缺陷
+
+- 当两个实际的种类特征比较接近时效果不理想.
